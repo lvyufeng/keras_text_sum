@@ -26,7 +26,7 @@ class OneShotModel():
         # tie it together
 
         model = Model(inputs=inputs,outputs=outputs)
-        model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
+        model.compile(loss='categorical_crossentropy',optimizer='adam',metrics=['categorical_accuracy'])
         model.summary()
         self.model = model
 
@@ -46,6 +46,13 @@ class OneShotModel():
     def summarize(self, src, word_index = None):
         predicted = self.model.predict(src)
         predicted_word_index = np.argmax(predicted,axis=2)
-
         return predicted_word_index
+
         # pass
+
+    def evaluate(self,X,Y):
+        loss_and_metrics = self.model.evaluate(X,Y,batch_size=16)
+
+        return loss_and_metrics
+
+

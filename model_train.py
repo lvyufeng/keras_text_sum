@@ -14,4 +14,4 @@ print(Y_train.shape)
 
 model = OneShotModel(MAX_INPUT_VOCAB_SIZE,MAX_OUTPUT_VOCAB_SIZE,MAX_INPUT_SEQ_LENGTH,MAX_OUTPUT_SEQ_LENGTH)
 
-history = model.fit(X_train,Y_train,X_test,Y_test,epochs=100,batch_size=32,model_save_path='./models_save/one_shot_model-weights.h5')
+history = model.fit(X_train,Y_train,X_test,Y_test,epochs=2,batch_size=32,model_save_path='./models_save/one_shot_model-weights.h5')

@@ -10,6 +10,21 @@ MAX_INPUT_VOCAB_SIZE = 5000
 MAX_OUTPUT_VOCAB_SIZE = 2000
 
 def load_data(path = "./../../datasets/fake_or_real_news.csv"):
+    df = pd.read_csv(path)
+    X = df['text']
+    Y = df['title']
+
+    # X data
+    X_tokenizer = Tokenizer(num_words=MAX_INPUT_VOCAB_SIZE)
+    X_tokenizer.fit_on_texts(X)
+    X_sequences = X_tokenizer.texts_to_sequences(X)
+
+    X_word_index = X_tokenizer.word_index
+
+    X_data = pad_sequences(X_sequences, MAX_INPUT_SEQ_LENGTH)
+    return X_data,Y
+
+def load_np_data(path = "./../../datasets/fake_or_real_news.csv"):
 
     df = pd.read_csv(path)
     X = df['text']
@@ -45,4 +60,4 @@ def load_data(path = "./../../datasets/fake_or_real_news.csv"):
 
     return X_train, X_test, Y_train, Y_test
 
-# load_data()
+# load_np_data()

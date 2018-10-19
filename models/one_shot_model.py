@@ -2,6 +2,7 @@
 from keras.layers import Input,Embedding,LSTM,RepeatVector,TimeDistributed,Dense
 from keras.models import Model
 import os
+import numpy as np
 
 class OneShotModel():
 
@@ -41,3 +42,10 @@ class OneShotModel():
             self.model.load_weights(path)
         else:
             print('There is no weights files')
+
+    def summarize(self, src, word_index = None):
+        predicted = self.model.predict(src)
+        predicted_word_index = np.argmax(predicted,axis=2)
+
+        return predicted_word_index
+        # pass

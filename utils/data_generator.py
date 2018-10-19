@@ -6,16 +6,17 @@ import math
 
 class DataGenerator(Sequence):
 
-    def __init__(self,datas, batch_size = 1, shuffle = True):
+    def __init__(self, x_samples, y_samples, batch_size = 8, shuffle = True):
         # pass
         self.batch_size = batch_size
-        self.datas = datas
-        self.indexes = np.arange(len(self.datas))
+        self.x_samples = x_samples
+        self.y_samples = y_samples
+
         self.shuffle = shuffle
 
 
     def __len__(self):
-        return math.ceil(len(self.datas)/float(self.batch_size))
+        return math.ceil(len(self.x_samples)/float(self.batch_size))
 
     def __getitem__(self, item):
         # generate each batch data

@@ -21,7 +21,7 @@ def load_data(path = "./../../datasets/fake_or_real_news.csv"):
 
     X_word_index = X_tokenizer.word_index
 
-    X_data = pad_sequences(X_sequences, MAX_INPUT_SEQ_LENGTH,padding='post')
+    X_data = pad_sequences(X_sequences, MAX_INPUT_SEQ_LENGTH,padding='pre')
 
     # Y_data
     Y_tokenizer = Tokenizer(num_words=MAX_OUTPUT_VOCAB_SIZE)
@@ -54,7 +54,7 @@ def load_np_data(path = "./../../datasets/fake_or_real_news.csv"):
 
     X_word_index = X_tokenizer.word_index
 
-    X_data = pad_sequences(X_sequences, MAX_INPUT_SEQ_LENGTH,padding='post')
+    X_data = pad_sequences(X_sequences, MAX_INPUT_SEQ_LENGTH,padding='pre')
 
     # Y_data
     Y_tokenizer = Tokenizer(num_words=MAX_OUTPUT_VOCAB_SIZE)
@@ -63,7 +63,7 @@ def load_np_data(path = "./../../datasets/fake_or_real_news.csv"):
 
     Y_word_index = Y_tokenizer.word_index
 
-    Y_data = pad_sequences(Y_sequences, MAX_OUTPUT_SEQ_LENGTH,padding='post')
+    Y_data = pad_sequences(Y_sequences, MAX_OUTPUT_SEQ_LENGTH,padding='pre')
     Y_data_final = np.zeros((len(Y),MAX_OUTPUT_SEQ_LENGTH,MAX_OUTPUT_VOCAB_SIZE))
 
     for line_index, word_indexes in enumerate(Y_data):

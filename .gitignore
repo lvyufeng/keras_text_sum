@@ -108,3 +108,6 @@ venv.bak/
 
 *.txt
 *.h5
+
+
+.idea/
